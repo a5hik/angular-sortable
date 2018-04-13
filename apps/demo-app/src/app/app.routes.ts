@@ -1,12 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home';
+import { KanbanComponent } from "./kanban";
 
 export const routes: Routes = [
   {
     path: '', redirectTo: 'home', pathMatch: 'full'
   },
   {
-    path: 'home', component: HomeComponent
+    path: 'home', component: KanbanComponent
   }
 ];
 

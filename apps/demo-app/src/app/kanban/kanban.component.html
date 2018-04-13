@@ -1,20 +1,19 @@
-<div id="board">
-  <div id="columns" class="row">
-    <div class="col-xs-3"
-         *ngFor="let column of columns; trackBy: track">
-      <div class="column">
-        <div class="columnHeader">
-          <span>{{column.name}} ({{column.cards.length}})</span>
-        </div>
-        <ul class="cards card-list" asSortable [sortableOptions]="sortableOptions"
-            [sortableData]="column.cards" [sortableInfo]="{type: column.name}" (onOrderChanged)="orderChanged($event)"
-            (onItemMoved)="itemMoved($event)" (onDragStart)="dragStarted($event)" (onDragOver)="dragMove($event)"
-            (onDragEnd)="dragEnded($event)">
-          <li class="card" *ngFor="let card of column.cards; let i = index; trackBy: trackByFn" asSortableItem>
-            <span asItemHandle>{{card.title}}</span>
-          </li>
-        </ul>
-      </div>
+<div class="ui">
+  <nav class="navbar app">App bar</nav>
+  <nav class="navbar board">Board bar</nav>
+  <div class="lists">
+    <div class="list" *ngFor="let column of columns">
+      <header>{{column.name}}</header>
+      <ul asSortable [sortableOptions]="sortableOptions"
+          [sortableData]="column.cards" [sortableInfo]="{type: column.name}" (onOrderChanged)="orderChanged($event)"
+          (onItemMoved)="itemMoved($event)" (onDragStart)="dragStarted($event)" (onDragOver)="dragMove($event)"
+          (onDragEnd)="dragEnded($event)">
+        <li class="card" *ngFor="let card of column.cards; let i = index; trackBy: trackByFn" asSortableItem>
+          <div asItemHandle><span>{{card.title}}</span></div>
+        </li>
+      </ul>
+      <footer>Add a card...</footer>
     </div>
   </div>
 </div>
+
