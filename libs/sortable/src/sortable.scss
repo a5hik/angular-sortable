@@ -1,0 +1,39 @@
+@import '../../../shared-styles/variables';
+/* stylelint-disable */
+.as-sortable {
+}
+/* stylelint-enable */
+.as-sortable-item {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+  display: flex;
+  width: 100%;
+}
+/* stylelint-disable */
+.as-item-handle {
+}
+/* stylelint-enable */
+
+.as-sortable-placeholder {
+  opacity: 0.4;
+  background: $dark-gray-2 !important;
+  border: 0.5px dashed $primary-border-color;
+}
+
+.as-sortable-item, .as-sortable-drag {
+  cursor: move;
+}
+
+.as-sortable-drag {
+  border: 0.5px transparent $primary-border-color;
+  cursor: move !important;
+}
+/* stylelint-disable */
+.as-sortable-drag-over {
+}
+/* stylelint-enable */
