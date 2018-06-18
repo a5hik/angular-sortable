@@ -1,7 +1,20 @@
-import { Directive, Input, Output, EventEmitter, OnInit, OnDestroy, ElementRef, NgZone } from '@angular/core';
+import {
+  Directive,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnDestroy,
+  ElementRef,
+  NgZone
+} from '@angular/core';
 import { SortableService } from './sortable.service';
 import * as Sortable from 'sortablejs';
-import { SortableDefaultOptions, DragData, SortableConfig } from './sortable.config';
+import {
+  SortableDefaultOptions,
+  DragData,
+  SortableConfig
+} from './sortable.config';
 import { SortableHelper } from './sortable.helper';
 
 @Directive({
@@ -44,14 +57,20 @@ export class SortableDirective implements OnInit, OnDestroy {
   /**
    * Callback functions.
    */
-  @Output('onDragStart') onDragStart: EventEmitter<DragData> = new EventEmitter<DragData>();
-  @Output('onDragEnd') onDragEnd: EventEmitter<DragData> = new EventEmitter<DragData>();
+  @Output('onDragStart')
+  onDragStart: EventEmitter<DragData> = new EventEmitter<DragData>();
+  @Output('onDragEnd')
+  onDragEnd: EventEmitter<DragData> = new EventEmitter<DragData>();
 
-  @Output('onOrderChanged') onOrderChanged: EventEmitter<DragData> = new EventEmitter<DragData>();
-  @Output('onItemMoved') onItemMoved: EventEmitter<DragData> = new EventEmitter<DragData>();
+  @Output('onOrderChanged')
+  onOrderChanged: EventEmitter<DragData> = new EventEmitter<DragData>();
+  @Output('onItemMoved')
+  onItemMoved: EventEmitter<DragData> = new EventEmitter<DragData>();
 
-  @Output('onDragEnter') onDragEnter: EventEmitter<Event> = new EventEmitter<Event>();
-  @Output('onDragLeave') onDragLeave: EventEmitter<Event> = new EventEmitter<Event>();
+  @Output('onDragEnter')
+  onDragEnter: EventEmitter<Event> = new EventEmitter<Event>();
+  @Output('onDragLeave')
+  onDragLeave: EventEmitter<Event> = new EventEmitter<Event>();
 
   get sortableData(): Array<any> {
     return this.data;
@@ -137,7 +156,9 @@ export class SortableDirective implements OnInit, OnDestroy {
         const fromSortableData = this.sortableService.sortableData;
         const fromSortableInfo = this.sortableService.sortableInfo;
         // Get item
-        const item: any = this.sortableService.sortableData[this.sortableService.index];
+        const item: any = this.sortableService.sortableData[
+          this.sortableService.index
+        ];
         // Remove item from previous list
         fromSortableData.splice(this.sortableService.index, 1);
 
@@ -148,7 +169,13 @@ export class SortableDirective implements OnInit, OnDestroy {
         this.sortableService.index = eventData.newIndex;
 
         this.ngZone.run(() => {
-          this.onItemMoved.emit(this.sortableHelper.getDragData(eventData, fromSortableData, fromSortableInfo));
+          this.onItemMoved.emit(
+            this.sortableHelper.getDragData(
+              eventData,
+              fromSortableData,
+              fromSortableInfo
+            )
+          );
         });
       },
 
@@ -157,20 +184,29 @@ export class SortableDirective implements OnInit, OnDestroy {
         const eventData = this.sortableHelper.getEventData(event);
 
         if (eventData.newIndex !== eventData.oldIndex) {
-          this.sortableData.splice(eventData.newIndex, 0, this.sortableData.splice(eventData.oldIndex, 1)[0]);
+          this.sortableData.splice(
+            eventData.newIndex,
+            0,
+            this.sortableData.splice(eventData.oldIndex, 1)[0]
+          );
           this.sortableService.sortableData = this.sortableData;
           this.sortableService.sortableInfo = this.sortableInfo;
           this.sortableService.index = eventData.newIndex;
 
           this.ngZone.run(() => {
-            this.onOrderChanged.emit(this.sortableHelper.getDragData(eventData));
+            this.onOrderChanged.emit(
+              this.sortableHelper.getDragData(eventData)
+            );
           });
         }
       }
     });
 
     this.ngZone.runOutsideAngular(() => {
-      this.sortable = Sortable.create(this.element, Object.assign(customSortOptions, this.options));
+      this.sortable = Sortable.create(
+        this.element,
+        Object.assign(customSortOptions, this.options)
+      );
     });
   }
 

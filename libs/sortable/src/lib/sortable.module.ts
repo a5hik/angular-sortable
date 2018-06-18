@@ -11,6 +11,11 @@ import { SortableHelper } from './sortable.helper';
   imports: [CommonModule],
   declarations: [SortableDirective, SortableItemDirective, ItemHandleDirective],
   exports: [SortableDirective, SortableItemDirective, ItemHandleDirective],
-  providers: [SortableService, SortableConfig, SortableDefaultOptions, SortableHelper]
+  providers: [
+    SortableService,
+    SortableConfig,
+    SortableDefaultOptions,
+    SortableHelper
+  ]
 })
 export class SortableModule {}

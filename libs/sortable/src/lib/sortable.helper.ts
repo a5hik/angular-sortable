@@ -14,9 +14,13 @@ export class SortableHelper {
       from: event.from,
       to: event.to
     };
-  }
+  };
 
-  public getDragData = (event: EventData, fromSortableModel?: Object, fromSortableInfo?: any): DragData => {
+  public getDragData = (
+    event: EventData,
+    fromSortableModel?: Object,
+    fromSortableInfo?: any
+  ): DragData => {
     return {
       newIndex: event.newIndex,
       oldIndex: event.oldIndex,
@@ -29,5 +33,5 @@ export class SortableHelper {
       destSortableModel: this.sortableService.sortableData,
       destSortableInfo: this.sortableService.sortableInfo
     };
-  }
+  };
 }

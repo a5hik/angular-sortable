@@ -18,6 +18,9 @@
     "paths": {
       "@angular-sortable/*": [
         "libs/*"
+      ],
+      "@angular-sortable/sortable": [
+        "libs/sortable/src/index.ts"
       ]
     }
   },
