@@ -1,7 +1,7 @@
 
 # AngularSortable
 
-Angular version of library https://github.com/a5hik/ng-sortable
+Angular bindings for https://github.com/RubaXa/Sortable
 
 TODO: 
 - Publish the lib as npm output. 
